@@ -409,7 +409,7 @@ fi
 # Compile
 if [ "$BUILD_TOOLCHAIN" = "y" ]; then
     echo -e "\r\n${GREEN_COLOR}Building Toolchain ...${RES}\r\n"
-    make -j$cores toolchain/compile || make -j$cores toolchain/compile V=s || exit 1
+    make -j$cores toolchain/compile STRIP=/bin/true || make -j$cores toolchain/compile V=s STRIP=/bin/true || exit 1
     mkdir -p toolchain-cache
     [ "$ENABLE_GLIBC" = "y" ] && LIBC=glibc || LIBC=musl
     if [ "$USE_GCC13" = "y" ]; then
